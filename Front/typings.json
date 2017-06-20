@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "axios": "github:DefinitelyTyped/DefinitelyTyped/axios/axios.d.ts#bcd5761826eb567876c197ccc6a87c4d05731054",
+    "react": "github:DefinitelyTyped/DefinitelyTyped/react/react.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "react-addons-test-utils": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-test-utils.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"
+  },
+  "dependencies": {
+    "react-router": "registry:npm/react-router#2.4.0+20160628165748",
+    "react-redux": "registry:npm/react-redux#4.4.0+20160207114942"
+  }
+}

@@ -1,0 +1,30 @@
+@baseColor:#e78170;
+.weui-tabbar {
+  display: flex;
+  position: static;
+  width: 100%;
+  background-color: #f7f7fa;
+  height: 54px;
+}
+
+.weui-navbar__item {
+  padding: 0;
+  background-color: #fff;
+}
+
+.weui-navbar__item:after {
+  border: none;
+}
+
+.weui-tabbar__icon+.weui-tabbar__label {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  background-color: #fff;
+  .iconfont, .weui-tabbar__label {
+    color: @baseColor;
+  }
+}
+

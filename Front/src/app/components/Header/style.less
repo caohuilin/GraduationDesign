@@ -1,0 +1,33 @@
+@baseColor:#e78170;
+
+.header {
+  padding: 0 15px;
+  height: 46px;
+}
+
+.container {
+  height: 46px;
+  line-height: 46px;
+  display: flex;
+  justify-content: space-between;
+  color: @baseColor;
+  border-bottom: dotted 1px @baseColor;
+}
+
+.logo {
+  display: flex;
+  p {
+    padding-left: 2px;
+    color: @baseColor;
+  }
+  .weui-tabbar__icon>i, i.weui-tabbar__icon {
+    color: @baseColor;
+    padding-top: 2px;
+  }
+}
+
+.loginButton {
+  a {
+    color: @baseColor;
+  }
+}

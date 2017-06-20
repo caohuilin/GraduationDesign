@@ -1,0 +1,763 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "git.oschina.net/wkc/book-server-v2/proto/v1/BookService.proto",
+    "version": "v2.0-20170405"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v2/books/{bookId}": {
+      "get": {
+        "operationId": "GetBookById",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetBookByIdResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/books/{bookId}/content/{meauId}": {
+      "get": {
+        "operationId": "GetBookContent",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetBookContentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "meauId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/login": {
+      "post": {
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2LoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/book_server_v2LoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/register": {
+      "post": {
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2RegisterResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/book_server_v2RegisterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/search/books": {
+      "get": {
+        "operationId": "SearchBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2SearchBookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "keyword",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/tags": {
+      "get": {
+        "operationId": "GetTags",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetTagsResponse"
+            }
+          }
+        },
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/tags/{id}": {
+      "get": {
+        "operationId": "GetTagById",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetTagByIdResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/user/collect": {
+      "get": {
+        "operationId": "GetCollectedBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetCollectedBookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user.account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.jwt",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      },
+      "post": {
+        "operationId": "CollectBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2CollectBookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/book_server_v2CollectBookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/user/info": {
+      "get": {
+        "operationId": "GetUserInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetUserInfoResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user.account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.jwt",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/user/recommend": {
+      "get": {
+        "operationId": "GetUserRecommendBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetUserRecommendBookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user.account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.jwt",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/user/status": {
+      "post": {
+        "operationId": "SetUserReadStatus",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2SetUserReadStatusResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/book_server_v2SetUserReadStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    },
+    "/v2/user/status/{book_id}": {
+      "get": {
+        "operationId": "GetUserReadStatus",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/book_server_v2GetUserReadStatusResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "user.account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.jwt",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BookService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GetBookByIdResponseCatalog": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        }
+      }
+    },
+    "GetUserInfoResponseCurrent": {
+      "type": "object",
+      "properties": {
+        "book_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "menu_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "has_history": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "last_time": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2Book": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2CollectBookRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        },
+        "book_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2CollectBookResponse": {
+      "type": "object"
+    },
+    "book_server_v2GetBookByIdRequest": {
+      "type": "object",
+      "properties": {
+        "bookId": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2GetBookByIdResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "catalog": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetBookByIdResponseCatalog"
+          }
+        }
+      }
+    },
+    "book_server_v2GetBookContentRequest": {
+      "type": "object",
+      "properties": {
+        "bookId": {
+          "type": "string"
+        },
+        "meauId": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2GetBookContentResponse": {
+      "type": "object",
+      "properties": {
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "book_server_v2GetCollectedBookRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        }
+      }
+    },
+    "book_server_v2GetCollectedBookResponse": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2Book"
+          }
+        },
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2GetCollectedBookResponseTag"
+          }
+        }
+      }
+    },
+    "book_server_v2GetCollectedBookResponseTag": {
+      "type": "object",
+      "properties": {
+        "book_id": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2GetTagByIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2GetTagByIdResponse": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2Book"
+          }
+        }
+      }
+    },
+    "book_server_v2GetTagsRequest": {
+      "type": "object"
+    },
+    "book_server_v2GetTagsResponse": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2GetTagsResponseTag"
+          }
+        }
+      }
+    },
+    "book_server_v2GetTagsResponseTag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "books_cnt": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "book_server_v2GetUserInfoRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        }
+      }
+    },
+    "book_server_v2GetUserInfoResponse": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "current": {
+          "$ref": "#/definitions/GetUserInfoResponseCurrent"
+        }
+      }
+    },
+    "book_server_v2GetUserReadStatusRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        },
+        "book_id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "book_server_v2GetUserReadStatusResponse": {
+      "type": "object",
+      "properties": {
+        "book_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "menu_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "has_history": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "last_time": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2GetUserRecommendBookRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        }
+      }
+    },
+    "book_server_v2GetUserRecommendBookResponse": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2Book"
+          }
+        }
+      }
+    },
+    "book_server_v2LoginRequest": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2LoginResponse": {
+      "type": "object",
+      "properties": {
+        "jwt": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2RegisterRequest": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2RegisterResponse": {
+      "type": "object",
+      "properties": {
+        "jwt": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2SearchBookRequest": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        }
+      }
+    },
+    "book_server_v2SearchBookResponse": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/book_server_v2Book"
+          }
+        }
+      }
+    },
+    "book_server_v2SetUserReadStatusRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/book_server_v2User"
+        },
+        "book_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "menu_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "book_server_v2SetUserReadStatusResponse": {
+      "type": "object"
+    },
+    "book_server_v2User": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "jwt": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

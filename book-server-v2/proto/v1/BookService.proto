@@ -1,0 +1,248 @@
+syntax = "proto3";
+
+package go.micro.srv.book_server_v2;
+import "google/api/annotations.proto";
+
+service BookService {
+	rpc GetTags(GetTagsRequest) returns (GetTagsResponse) {
+		// ws.Route(ws.GET("/tags").To(handler.GetTags))
+		option (google.api.http) = {
+			get: "/v2/tags"
+		};
+	}
+	rpc GetTagById(GetTagByIdRequest) returns (GetTagByIdResponse) {
+		// ws.Route(ws.GET("/tags/{id}").To(handler.GetTagById))
+		option (google.api.http) = {
+			get: "/v2/tags/{id}"
+		};
+	}
+	rpc GetBookById(GetBookByIdRequest) returns (GetBookByIdResponse) {
+		// ws.Route(ws.GET("/books/{bookId}").To(handler.GetBookById))
+		option (google.api.http) = {
+			get: "/v2/books/{bookId}"
+		};
+	}
+	rpc GetBookContent(GetBookContentRequest) returns (GetBookContentResponse) {
+		// ws.Route(ws.GET("/books/{bookId}/content/{meauId}").To(handler.GetBookContent))
+		option (google.api.http) = {
+			get: "/v2/books/{bookId}/content/{meauId}"
+		};
+	}
+	rpc SearchBook(SearchBookRequest) returns (SearchBookResponse) {
+		// ws.Route(ws.GET("/search/books").To(handler.SearchBook))
+		option (google.api.http) = {
+			get: "/v2/search/books"
+		};
+	}
+	rpc Register(RegisterRequest) returns (RegisterResponse) {
+		// ws.Route(ws.POST("/register").To(handler.Register))
+		option (google.api.http) = {
+			post: "/v2/register"
+			body: "*"
+		};
+	}
+	rpc Login(LoginRequest) returns (LoginResponse) {
+		// ws.Route(ws.POST("/login").To(handler.Login))
+		option (google.api.http) = {
+			post: "/v2/login"
+			body: "*"
+		};
+	}
+	rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse) {
+		// ws.Route(ws.GET("/user/info").Filter(handler.JwtAuthenticate).To(handler.GetUserInfo))
+		option (google.api.http) = {
+			get: "/v2/user/info"
+		};
+	}
+	rpc CollectBook(CollectBookRequest) returns (CollectBookResponse) {
+		// ws.Route(ws.POST("/user/collect").Filter(handler.JwtAuthenticate).To(handler.CollectBook))
+		option (google.api.http) = {
+			post: "/v2/user/collect"
+			body: "*"
+		};
+	}
+	rpc GetCollectedBook(GetCollectedBookRequest) returns (GetCollectedBookResponse) {
+		// ws.Route(ws.GET("/user/collect").Filter(handler.JwtAuthenticate).To(handler.GetCollectedBook))
+		option (google.api.http) = {
+			get: "/v2/user/collect"
+		};
+	}
+	rpc SetUserReadStatus(SetUserReadStatusRequest) returns (SetUserReadStatusResponse) {
+		// ws.Route(ws.POST("/user/status").Filter(handler.JwtAuthenticate).To(handler.SetUserReadStatus))
+		option (google.api.http) = {
+			post: "/v2/user/status"
+			body: "*"
+		};
+	}
+	rpc GetUserReadStatus(GetUserReadStatusRequest) returns (GetUserReadStatusResponse) {
+		// ws.Route(ws.GET("/user/status/{bookId}").Filter(handler.JwtAuthenticate).To(handler.GetUserReadStatus))
+		option (google.api.http) = {
+			get: "/v2/user/status/{book_id}"
+		};
+	}
+	rpc GetUserRecommendBook(GetUserRecommendBookRequest) returns (GetUserRecommendBookResponse) {
+		// ws.Route(ws.GET("/user/recommend").Filter(handler.JwtAuthenticate).To(handler.GetUserRecommendBook))
+		option (google.api.http) = {
+			get: "/v2/user/recommend"
+		};
+	}
+}
+
+message GetTagsRequest {
+}
+
+message GetTagsResponse {
+	message Tag {
+		string id = 1;
+		string category = 2;
+		int32 books_cnt = 3;
+	}
+	repeated Tag tags = 1;
+}
+
+message GetTagByIdRequest {
+	string id = 1;
+}
+
+message Book {
+	string id = 1;
+	string name = 2;
+	string picture = 3;
+	string author = 4;
+	string description = 5;
+	string category = 6;
+}
+
+message GetTagByIdResponse {
+	repeated Book books = 1;
+}
+
+message GetBookByIdRequest {
+	string bookId = 1;
+}
+
+message GetBookByIdResponse {
+	string id = 1;
+	string name = 2;
+	string picture = 3;
+	string author = 4;
+	string description = 5;
+	string category = 6;
+	message Catalog {
+		string id = 1;
+		string chapter = 2;
+	}
+	repeated Catalog catalog = 11;
+}
+
+message GetBookContentRequest {
+	string bookId = 1;
+	string meauId = 2;
+}
+
+message GetBookContentResponse {
+	repeated string contents = 3;
+}
+
+message SearchBookRequest {
+	string keyword = 1;
+}
+
+message SearchBookResponse {
+	repeated Book books = 1;
+}
+
+message RegisterRequest {
+	string account = 1;
+	string nickname = 2;
+	string password = 3;
+}
+
+message RegisterResponse {
+	string jwt = 1;
+}
+
+message LoginRequest {
+	string account = 1;
+	string password = 3;
+}
+
+message LoginResponse {
+	string jwt = 1;
+}
+
+message User {
+	string account = 1;
+	string jwt = 2;
+}
+
+message GetUserInfoRequest {
+	User user = 100;
+}
+
+message GetUserInfoResponse {
+	string username = 1;
+	string nickname = 2;
+	message Current {
+		int32 book_id = 1;
+		int32 menu_id = 2;
+		int32 page = 3;
+		bool has_history = 4;
+		string last_time = 5;
+	}
+	Current current = 4;
+}
+
+message CollectBookRequest {
+	User user = 100;
+	int32 book_id = 1;
+	string tag = 2;
+	string action = 3;
+}
+
+message CollectBookResponse {
+}
+
+message GetCollectedBookRequest {
+	User user = 100;
+}
+
+message GetCollectedBookResponse {
+	repeated Book books = 1;
+	message Tag {
+		string book_id = 1; 
+		string tag = 2; 
+	}
+	repeated Tag tag = 2;
+}
+
+message SetUserReadStatusRequest {
+	User user = 100;
+	int32 book_id = 1;
+	int32 menu_id = 2;
+	int32 page = 3;
+}
+
+message SetUserReadStatusResponse {
+}
+
+message GetUserReadStatusRequest {
+	User user = 100;
+	int32 book_id = 1;
+}
+
+message GetUserReadStatusResponse {
+	int32 book_id = 1;
+	int32 menu_id = 2;
+	int32 page = 3;
+	bool has_history = 4;
+	string last_time = 5;
+}
+
+message GetUserRecommendBookRequest {
+	User user = 100;
+}
+
+message GetUserRecommendBookResponse {
+	repeated Book books = 1;
+}

@@ -1,0 +1,34 @@
+@baseColor:#e78170;
+.category {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      list-style: none;
+      margin: 5px;
+      a {
+        padding: 5px 10px;
+        border: 1px solid #d9d9d9;
+        border-radius: 14px;
+        box-sizing: border-box;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #666;
+      }
+    }
+    .pack {
+      margin-left: 3px;
+    }
+    .tagActive {
+      color: white;
+      border-color: @baseColor;
+      background: @baseColor;
+    }
+  }
+}
+.loader-tiny {
+  width: 17px;
+  margin-left: 5px;
+  margin-top: 15px;
+}

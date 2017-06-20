@@ -1,0 +1,29 @@
+.progress-set {
+    position: relative;
+}
+.progerss-bar {
+    width: 200px;
+    height: 2px;
+    background: #999;
+    margin: 16px;
+    display: flex;
+    .left {
+        background: #eee;
+    }
+    .right {
+        background: transparent;
+    }
+}
+.progress-circle {
+        background: #333;
+        opacity: 0.8;
+        z-index: 10001;
+        width: 8px;
+        height: 8px;
+        border: solid 2px #eee;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 16px;
+    }

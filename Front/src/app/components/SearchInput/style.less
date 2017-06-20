@@ -1,0 +1,33 @@
+.search {
+    position: relative;
+    .weui-search-bar:after,
+    .weui-search-bar:before,
+    .weui-search-bar:after,
+    .weui-search-bar:after {
+        border: none;
+    }
+    .hide {
+        transform-origin: 0 0 0;
+        opacity: 1;
+        transform: scale(1, 1);
+        display: none;
+    }
+    .show {
+        display: block;
+        transform-origin: 0 0 0;
+        opacity: 1;
+        transform: scale(1, 1);
+        margin-top: 5px;
+    }
+    .search_result_list {
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+        background: #efeff4;
+        .weui-cell {
+          a {
+            color: #555;
+          }
+        }
+    }
+}

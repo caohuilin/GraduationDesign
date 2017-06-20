@@ -1,0 +1,30 @@
+.remind-popup {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 1005;
+    background: #000;
+    opacity: 0.6;
+    color: #eee;
+    width: 100vw;
+    justify-content: space-between;
+    p {
+        line-height: 33px;
+        margin: 21px 0 21px 15px;
+    }
+    .button-group {
+        display: flex;
+        a {
+            color: #eee;
+            font-size: 12px;
+            border: 1px solid #e78170;
+            padding: 6px 9px;
+            text-align: center;
+            border-radius: 2px;
+            margin: 21px 15px 21px 0;
+            &:first-child {
+                margin-right: 30px;
+            }
+        }
+    }
+}

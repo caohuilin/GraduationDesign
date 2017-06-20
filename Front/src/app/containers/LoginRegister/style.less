@@ -1,0 +1,74 @@
+.loginregister {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #eeeeee;
+    background-size: cover;
+    .back {
+        position: absolute;
+        z-index: 10002;
+        top: 1%;
+        right: 1%;
+        i {
+            color: #fff;
+        }
+    }
+    header {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        color: #323a45;
+    }
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .5);
+    }
+    .popup {
+        width: 74%;
+        padding: 30px 25px;
+        position: relative;
+        z-index: 1001;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    .otherLogin {
+        position: relative;
+        span {
+            text-align: center;
+            display: block;
+            padding: 0 20px 0;
+            margin: 20px 0;
+            line-height: 1px;
+            border-left: 50px solid #ddd;
+            border-right: 50px solid #ddd;
+            text-align: center;
+        }
+        .icon {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            img {
+                display: block;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+    .registerButton {
+        margin-top: 29px;
+        text-align: center;
+        color: rgba(0, 0, 0, .6);
+        transition: color .2s ease;
+        font-size: 14px;
+        display: block;
+    }
+}
